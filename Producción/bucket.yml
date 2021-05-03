@@ -1,0 +1,8 @@
+flows:
+  a0cdd45e-a4b0-47a3-8d18-c7df3007d5ef: {ver: 1, file: INFORMIX_-_Selección_de_Tablas.snapshot,
+    comments: Commit Inicial, author: anonymous, created: 1620064685529, flowName: INFORMIX
+      - Selección de Tablas, flowDesc: 'El proceso levanta un archivo de configuración
+      en formato json, y genera un flowfile con atributos personalizados por cada
+      tabla del json'}
+layoutVer: 1
+bucketId: a64c89cd-675c-444c-96ac-298ea8bfeae0
