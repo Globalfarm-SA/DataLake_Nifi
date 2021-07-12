@@ -4,5 +4,14 @@ flows:
       - Selección de Tablas, flowDesc: 'El proceso levanta un archivo de configuración
       en formato json, y genera un flowfile con atributos personalizados por cada
       tabla del json'}
+  8e24bec8-b7ba-482a-8900-93f96741d14a:
+    ver: 1
+    file: Alerta.snapshot
+    comments: ''
+    author: anonymous
+    created: 1626129335598
+    flowName: Alerta
+    flowDesc: "Control de errores, envío de detalles por mail. \n\nPersonalizable\
+      \ con variables/atributos:\nalerting-to\nalerting-cc\nalerting-subject"
 layoutVer: 1
 bucketId: a64c89cd-675c-444c-96ac-298ea8bfeae0

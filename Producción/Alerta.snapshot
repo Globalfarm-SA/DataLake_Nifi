@@ -1,0 +1,239 @@
+{
+  "header" : {
+    "dataModelVersion" : "3"
+  },
+  "content" : {
+    "flowSnapshot" : {
+      "externalControllerServices" : { },
+      "flowContents" : {
+        "comments" : "",
+        "componentType" : "PROCESS_GROUP",
+        "connections" : [ {
+          "backPressureDataSizeThreshold" : "10 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "c4205f81-733c-33b0-add1-9fced76c6f76",
+            "id" : "e683d620-5559-320b-95bb-cc94a09b6fe1",
+            "name" : "PutEmail",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "c4205f81-733c-33b0-add1-9fced76c6f76",
+          "identifier" : "be24e377-01f6-3665-93b8-2004784724fe",
+          "labelIndex" : 1,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "" ],
+          "source" : {
+            "groupId" : "c4205f81-733c-33b0-add1-9fced76c6f76",
+            "id" : "f23f953b-03f9-3850-9cbb-fd2de736b752",
+            "name" : "IN_Alerta",
+            "type" : "INPUT_PORT"
+          },
+          "zIndex" : 0
+        } ],
+        "controllerServices" : [ ],
+        "flowFileConcurrency" : "UNBOUNDED",
+        "flowFileOutboundPolicy" : "STREAM_WHEN_AVAILABLE",
+        "funnels" : [ ],
+        "identifier" : "c4205f81-733c-33b0-add1-9fced76c6f76",
+        "inputPorts" : [ {
+          "allowRemoteAccess" : false,
+          "componentType" : "INPUT_PORT",
+          "concurrentlySchedulableTaskCount" : 1,
+          "groupIdentifier" : "c4205f81-733c-33b0-add1-9fced76c6f76",
+          "identifier" : "f23f953b-03f9-3850-9cbb-fd2de736b752",
+          "name" : "IN_Alerta",
+          "position" : {
+            "x" : 572.0000000000002,
+            "y" : 163.0
+          },
+          "type" : "INPUT_PORT"
+        } ],
+        "labels" : [ ],
+        "name" : "Alerta",
+        "outputPorts" : [ ],
+        "position" : {
+          "x" : 2344.0,
+          "y" : 56.0
+        },
+        "processGroups" : [ ],
+        "processors" : [ {
+          "autoTerminatedRelationships" : [ "success", "failure" ],
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-standard-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.13.2"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "c4205f81-733c-33b0-add1-9fced76c6f76",
+          "identifier" : "e683d620-5559-320b-95bb-cc94a09b6fe1",
+          "name" : "PutEmail",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 512.0,
+            "y" : 320.0
+          },
+          "properties" : {
+            "CC" : "${alerting-cc}",
+            "SMTP Socket Factory" : "javax.net.ssl.SSLSocketFactory",
+            "Attach File" : "true",
+            "SMTP Port" : "25",
+            "SMTP Auth" : "true",
+            "From" : "soporte@binetz.com.ar",
+            "Include All Attributes In Message" : "true",
+            "SMTP Hostname" : "mail.binetz.com.ar",
+            "Subject" : "${alerting-subject}",
+            "SMTP X-Mailer Header" : "NiFi",
+            "Content Type" : "text/plain",
+            "SMTP Username" : "soporte@binetz.com.ar",
+            "To" : "${alerting-to}",
+            "email-ff-content-as-message" : "false",
+            "SMTP TLS" : "false"
+          },
+          "propertyDescriptors" : {
+            "CC" : {
+              "displayName" : "CC",
+              "identifiesControllerService" : false,
+              "name" : "CC",
+              "sensitive" : false
+            },
+            "SMTP Socket Factory" : {
+              "displayName" : "SMTP Socket Factory",
+              "identifiesControllerService" : false,
+              "name" : "SMTP Socket Factory",
+              "sensitive" : false
+            },
+            "BCC" : {
+              "displayName" : "BCC",
+              "identifiesControllerService" : false,
+              "name" : "BCC",
+              "sensitive" : false
+            },
+            "Message" : {
+              "displayName" : "Message",
+              "identifiesControllerService" : false,
+              "name" : "Message",
+              "sensitive" : false
+            },
+            "Attach File" : {
+              "displayName" : "Attach File",
+              "identifiesControllerService" : false,
+              "name" : "Attach File",
+              "sensitive" : false
+            },
+            "attribute-name-regex" : {
+              "displayName" : "Attributes to Send as Headers (Regex)",
+              "identifiesControllerService" : false,
+              "name" : "attribute-name-regex",
+              "sensitive" : false
+            },
+            "SMTP Port" : {
+              "displayName" : "SMTP Port",
+              "identifiesControllerService" : false,
+              "name" : "SMTP Port",
+              "sensitive" : false
+            },
+            "SMTP Auth" : {
+              "displayName" : "SMTP Auth",
+              "identifiesControllerService" : false,
+              "name" : "SMTP Auth",
+              "sensitive" : false
+            },
+            "From" : {
+              "displayName" : "From",
+              "identifiesControllerService" : false,
+              "name" : "From",
+              "sensitive" : false
+            },
+            "Include All Attributes In Message" : {
+              "displayName" : "Include All Attributes In Message",
+              "identifiesControllerService" : false,
+              "name" : "Include All Attributes In Message",
+              "sensitive" : false
+            },
+            "SMTP Hostname" : {
+              "displayName" : "SMTP Hostname",
+              "identifiesControllerService" : false,
+              "name" : "SMTP Hostname",
+              "sensitive" : false
+            },
+            "Subject" : {
+              "displayName" : "Subject",
+              "identifiesControllerService" : false,
+              "name" : "Subject",
+              "sensitive" : false
+            },
+            "SMTP X-Mailer Header" : {
+              "displayName" : "SMTP X-Mailer Header",
+              "identifiesControllerService" : false,
+              "name" : "SMTP X-Mailer Header",
+              "sensitive" : false
+            },
+            "Content Type" : {
+              "displayName" : "Content Type",
+              "identifiesControllerService" : false,
+              "name" : "Content Type",
+              "sensitive" : false
+            },
+            "SMTP Username" : {
+              "displayName" : "SMTP Username",
+              "identifiesControllerService" : false,
+              "name" : "SMTP Username",
+              "sensitive" : false
+            },
+            "To" : {
+              "displayName" : "To",
+              "identifiesControllerService" : false,
+              "name" : "To",
+              "sensitive" : false
+            },
+            "SMTP Password" : {
+              "displayName" : "SMTP Password",
+              "identifiesControllerService" : false,
+              "name" : "SMTP Password",
+              "sensitive" : true
+            },
+            "email-ff-content-as-message" : {
+              "displayName" : "Flow file content as message",
+              "identifiesControllerService" : false,
+              "name" : "email-ff-content-as-message",
+              "sensitive" : false
+            },
+            "SMTP TLS" : {
+              "displayName" : "SMTP TLS",
+              "identifiesControllerService" : false,
+              "name" : "SMTP TLS",
+              "sensitive" : false
+            }
+          },
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.standard.PutEmail",
+          "yieldDuration" : "1 sec"
+        } ],
+        "remoteProcessGroups" : [ ],
+        "variables" : {
+          "alerting-cc" : "diego.labonia@binetz.com",
+          "alerting-to" : "diego.labonia@binetz.com",
+          "alerting-subject" : "Alerta de NiFi"
+        }
+      },
+      "flowEncodingVersion" : "1.0",
+      "parameterContexts" : { }
+    }
+  }
+}
