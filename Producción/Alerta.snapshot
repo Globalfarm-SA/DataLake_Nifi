@@ -16,13 +16,13 @@
           "destination" : {
             "comments" : "",
             "groupId" : "c4205f81-733c-33b0-add1-9fced76c6f76",
-            "id" : "e683d620-5559-320b-95bb-cc94a09b6fe1",
-            "name" : "PutEmail",
+            "id" : "e7e6fa99-bbcb-3ac0-a502-16c3421afa1b",
+            "name" : "Check Timeout",
             "type" : "PROCESSOR"
           },
           "flowFileExpiration" : "0 sec",
           "groupIdentifier" : "c4205f81-733c-33b0-add1-9fced76c6f76",
-          "identifier" : "be24e377-01f6-3665-93b8-2004784724fe",
+          "identifier" : "46ea13c1-40c3-378d-acf7-076878dc0588",
           "labelIndex" : 1,
           "loadBalanceCompression" : "DO_NOT_COMPRESS",
           "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
@@ -31,10 +31,41 @@
           "prioritizers" : [ ],
           "selectedRelationships" : [ "" ],
           "source" : {
+            "comments" : "",
             "groupId" : "c4205f81-733c-33b0-add1-9fced76c6f76",
             "id" : "f23f953b-03f9-3850-9cbb-fd2de736b752",
             "name" : "IN_Alerta",
             "type" : "INPUT_PORT"
+          },
+          "zIndex" : 0
+        }, {
+          "backPressureDataSizeThreshold" : "10 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "c4205f81-733c-33b0-add1-9fced76c6f76",
+            "id" : "e683d620-5559-320b-95bb-cc94a09b6fe1",
+            "name" : "PutEmail",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "c4205f81-733c-33b0-add1-9fced76c6f76",
+          "identifier" : "d05cd23c-f88c-39ae-a4dd-3a02e5fc7da5",
+          "labelIndex" : 1,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "output stream" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "c4205f81-733c-33b0-add1-9fced76c6f76",
+            "id" : "e7e6fa99-bbcb-3ac0-a502-16c3421afa1b",
+            "name" : "Check Timeout",
+            "type" : "PROCESSOR"
           },
           "zIndex" : 0
         } ],
@@ -45,18 +76,33 @@
         "identifier" : "c4205f81-733c-33b0-add1-9fced76c6f76",
         "inputPorts" : [ {
           "allowRemoteAccess" : false,
+          "comments" : "",
           "componentType" : "INPUT_PORT",
           "concurrentlySchedulableTaskCount" : 1,
           "groupIdentifier" : "c4205f81-733c-33b0-add1-9fced76c6f76",
           "identifier" : "f23f953b-03f9-3850-9cbb-fd2de736b752",
           "name" : "IN_Alerta",
           "position" : {
-            "x" : 572.0000000000002,
-            "y" : 163.0
+            "x" : 568.0,
+            "y" : 160.0
           },
           "type" : "INPUT_PORT"
         } ],
-        "labels" : [ ],
+        "labels" : [ {
+          "componentType" : "LABEL",
+          "groupIdentifier" : "c4205f81-733c-33b0-add1-9fced76c6f76",
+          "height" : 80.0,
+          "identifier" : "4e53400b-ff14-3a0e-8b16-dcbbe971aa0f",
+          "label" : "Solo deja pasar las notificaciones \npara las cuales se haya cumplido el ${alerting-timeout}\n.\n.\nSe configura por variables o atributos",
+          "position" : {
+            "x" : 896.0,
+            "y" : 288.0
+          },
+          "style" : {
+            "font-size" : "12px"
+          },
+          "width" : 328.0
+        } ],
         "name" : "Alerta",
         "outputPorts" : [ ],
         "position" : {
@@ -65,6 +111,91 @@
         },
         "processGroups" : [ ],
         "processors" : [ {
+          "autoTerminatedRelationships" : [ "original", "nonzero status" ],
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-standard-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.13.2"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "c4205f81-733c-33b0-add1-9fced76c6f76",
+          "identifier" : "e7e6fa99-bbcb-3ac0-a502-16c3421afa1b",
+          "name" : "Check Timeout",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 512.0,
+            "y" : 264.0
+          },
+          "properties" : {
+            "argumentsStrategy" : "Command Arguments Property",
+            "Max Attribute Length" : "256",
+            "Command Path" : "/datalake/code/utils/nifi_alert_timeout.py",
+            "Argument Delimiter" : ";",
+            "Ignore STDIN" : "true",
+            "Command Arguments" : "${alerting-timeout};${alerting-path};${alerting-subject}"
+          },
+          "propertyDescriptors" : {
+            "argumentsStrategy" : {
+              "displayName" : "Command Arguments Strategy",
+              "identifiesControllerService" : false,
+              "name" : "argumentsStrategy",
+              "sensitive" : false
+            },
+            "Max Attribute Length" : {
+              "displayName" : "Max Attribute Length",
+              "identifiesControllerService" : false,
+              "name" : "Max Attribute Length",
+              "sensitive" : false
+            },
+            "Command Path" : {
+              "displayName" : "Command Path",
+              "identifiesControllerService" : false,
+              "name" : "Command Path",
+              "sensitive" : false
+            },
+            "Working Directory" : {
+              "displayName" : "Working Directory",
+              "identifiesControllerService" : false,
+              "name" : "Working Directory",
+              "sensitive" : false
+            },
+            "Output Destination Attribute" : {
+              "displayName" : "Output Destination Attribute",
+              "identifiesControllerService" : false,
+              "name" : "Output Destination Attribute",
+              "sensitive" : false
+            },
+            "Argument Delimiter" : {
+              "displayName" : "Argument Delimiter",
+              "identifiesControllerService" : false,
+              "name" : "Argument Delimiter",
+              "sensitive" : false
+            },
+            "Ignore STDIN" : {
+              "displayName" : "Ignore STDIN",
+              "identifiesControllerService" : false,
+              "name" : "Ignore STDIN",
+              "sensitive" : false
+            },
+            "Command Arguments" : {
+              "displayName" : "Command Arguments",
+              "identifiesControllerService" : false,
+              "name" : "Command Arguments",
+              "sensitive" : false
+            }
+          },
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.standard.ExecuteStreamCommand",
+          "yieldDuration" : "1 sec"
+        }, {
           "autoTerminatedRelationships" : [ "success", "failure" ],
           "bulletinLevel" : "WARN",
           "bundle" : {
@@ -82,7 +213,7 @@
           "penaltyDuration" : "30 sec",
           "position" : {
             "x" : 512.0,
-            "y" : 320.0
+            "y" : 464.0
           },
           "properties" : {
             "CC" : "${alerting-cc}",
@@ -229,7 +360,9 @@
         "variables" : {
           "alerting-cc" : "diego.labonia@binetz.com",
           "alerting-to" : "diego.labonia@binetz.com",
-          "alerting-subject" : "Alerta de NiFi"
+          "alerting-subject" : "Alerta de NiFi",
+          "alerting-timeout" : "2",
+          "alerting-path" : "/datalake/data/files/alerting/"
         }
       },
       "flowEncodingVersion" : "1.0",
