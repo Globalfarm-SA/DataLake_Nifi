@@ -135,7 +135,7 @@
             "Max Attribute Length" : "256",
             "Command Path" : "/datalake/code/utils/nifi_alert_timeout.py",
             "Argument Delimiter" : ";",
-            "Ignore STDIN" : "true",
+            "Ignore STDIN" : "false",
             "Command Arguments" : "${alerting-timeout};${alerting-path};${alerting-subject}"
           },
           "propertyDescriptors" : {

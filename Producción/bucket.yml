@@ -5,12 +5,12 @@ flows:
       en formato json, y genera un flowfile con atributos personalizados por cada
       tabla del json'}
   8e24bec8-b7ba-482a-8900-93f96741d14a:
-    ver: 2
+    ver: 3
     file: Alerta.snapshot
-    comments: Se agrega un script en python, que controla el timeout antes de volver
-      a notificar. Configurable con ${alerting-timeout} en horas
+    comments: El script acepta el contenido del flowfile por stdin, y lo printea como
+      output para incluirlo en la notificación
     author: anonymous
-    created: 1627399632874
+    created: 1628020869417
     flowName: Alerta
     flowDesc: "Control de errores, envío de detalles por mail. \n\nPersonalizable\
       \ con variables/atributos:\nalerting-to\nalerting-cc\nalerting-subject"
