@@ -105,6 +105,7 @@
         } ],
         "name" : "Alerta",
         "outputPorts" : [ ],
+        "parameterContextName" : "General",
         "position" : {
           "x" : 2344.0,
           "y" : 56.0
@@ -229,6 +230,7 @@
             "Content Type" : "text/plain",
             "SMTP Username" : "soporte@binetz.com.ar",
             "To" : "${alerting-to}",
+            "SMTP Password" : "#{alerting-password}",
             "email-ff-content-as-message" : "false",
             "SMTP TLS" : "false"
           },
@@ -366,7 +368,16 @@
         }
       },
       "flowEncodingVersion" : "1.0",
-      "parameterContexts" : { }
+      "parameterContexts" : {
+        "General" : {
+          "name" : "General",
+          "parameters" : [ {
+            "description" : "SMTP password para soporte@binetz.com.ar",
+            "name" : "alerting-password",
+            "sensitive" : true
+          } ]
+        }
+      }
     }
   }
 }

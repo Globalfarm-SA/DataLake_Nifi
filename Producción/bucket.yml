@@ -5,12 +5,11 @@ flows:
       en formato json, y genera un flowfile con atributos personalizados por cada
       tabla del json'}
   8e24bec8-b7ba-482a-8900-93f96741d14a:
-    ver: 3
+    ver: 4
     file: Alerta.snapshot
-    comments: El script acepta el contenido del flowfile por stdin, y lo printea como
-      output para incluirlo en la notificación
+    comments: 'Password SMTP seteada por Parameter Context #{alerting-password}'
     author: anonymous
-    created: 1628020869417
+    created: 1628021332901
     flowName: Alerta
     flowDesc: "Control de errores, envío de detalles por mail. \n\nPersonalizable\
       \ con variables/atributos:\nalerting-to\nalerting-cc\nalerting-subject"
