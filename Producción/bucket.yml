@@ -1,4 +1,18 @@
 flows:
+  bcc1dea6-246d-4aad-863d-abaf04d983b3:
+    ver: 1
+    file: Store.snapshot
+    comments: Commit inicial
+    author: anonymous
+    created: 1650476675598
+    flowName: Store
+    flowDesc: |-
+      - Escribe parquet full en /tabla/full
+      - Escribe parquets incrementales en /tabla/incrementales/tabla-timestamp
+      - Escribe postgres full con insert deleteando previamente
+      - Escribe postgres incremental con upsert
+      - Escribe logs del proceso en postgres tabla nifi_logs
+      - Escribe la fecha del último incremental de cada tabla
   a0cdd45e-a4b0-47a3-8d18-c7df3007d5ef: {ver: 2, file: INFORMIX_-_Selección_de_Tablas.snapshot,
     comments: '', author: anonymous, created: 1650475789671, flowName: INFORMIX -
       Selección de Tablas, flowDesc: 'El proceso levanta un archivo de configuración
