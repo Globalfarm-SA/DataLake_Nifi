@@ -13,5 +13,9 @@ flows:
     flowName: Alerta
     flowDesc: "Control de errores, envío de detalles por mail. \n\nPersonalizable\
       \ con variables/atributos:\nalerting-to\nalerting-cc\nalerting-subject"
+  6fb6f16f-8160-4570-8870-e93aedc9b127: {ver: 1, file: Condiciones_Filtrado.snapshot,
+    comments: Commit inicial, author: anonymous, created: 1650475864702, flowName: Condiciones_Filtrado,
+    flowDesc: 'Define los filtros (where) para la ingesta full / incremental, considerando
+      adicionalmente cuánta historia se necesita extraer de cada tabla.'}
 layoutVer: 1
 bucketId: a64c89cd-675c-444c-96ac-298ea8bfeae0
